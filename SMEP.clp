@@ -2,7 +2,7 @@
 * Alex Yu
 * November 5, 2018
 *
-* The Swim Meet Event Picker (SMEP) chooses what events the user should enter at a swim meet given a set of 
+* The Swim Meet Event Assistant (SMEA) chooses what events the user should enter at a swim meet given a set of 
 * constraints based on user input. To run, simply batch in this file. Once batched, you can re-run the program 
 * with the command (pickEvents). You can also use the restart button on the graphic interface.
 */
@@ -10,8 +10,8 @@
 (clear)
 (reset)
 
-(batch smep/GUI.clp)
-(batch smep/Toolbox.clp)
+(batch smea/GUI.clp)
+(batch smea/Toolbox.clp)
 
 /*
 * This template keeps track of the user's answers (the value) to specific questions (the type). Facts in this template
@@ -25,8 +25,8 @@
 */
 (deftemplate event (slot distance (type INTEGER)) (slot stroke))
 
-(defglobal ?*PATH_TO_HS_EVENTS* = "smep/HSEvents.txt")
-(defglobal ?*PATH_TO_COLLEGIATE_EVENTS* = "smep/CollegiateEvents.txt")
+(defglobal ?*PATH_TO_HS_EVENTS* = "smea/HSEvents.txt")
+(defglobal ?*PATH_TO_COLLEGIATE_EVENTS* = "smea/CollegiateEvents.txt")
 
 (defglobal ?*STROKES* = (create$ "Fly" "Back" "Breast" "Free" "IM"))
 (defglobal ?*DISTANCES* = (create$ "Sprint" "Mid-Distance" "Long Distance"))
@@ -48,7 +48,7 @@
 
 (defrule startup "Prints the startup message and prompts the user to click the start button to begin"
    =>
-   (bind ?startupText "<html> Welcome to the <b> Swim Meet Event Picker </b> (SMEP for short). This program will (hopefully) <br/>")
+   (bind ?startupText "<html> Welcome to the <b> Swim Meet Event Assistant </b> (SMEA for short). This program will (hopefully) <br/>")
    (bind ?startupText (str-cat ?startupText "help you decide which events you should enter in at a swim meet. However indecisive <br/>"))
    (bind ?startupText (str-cat ?startupText "you might be, you should still have some idea about yourself, such as your goals and <br/>"))
    (bind ?startupText (str-cat ?startupText "your best events. Click the button below when you are ready. <br/> <br/> <br/> <br/> </html>"))
@@ -100,19 +100,19 @@
 (defrule batchFunRules
    (parameter (type goal) (val "Have fun"))
    =>
-   (batch smep/FunRules.clp)
+   (batch smea/FunRules.clp)
 )
 
 (defrule batchImproveRules
    (parameter (type goal) (val "Improve or train"))
    =>
-   (batch smep/ImproveRules.clp)
+   (batch smea/ImproveRules.clp)
 )
 
 (defrule batchCompeteRules
    (parameter (type goal) (val "Compete and win races"))
    =>
-   (batch smep/CompeteRules.clp)
+   (batch smea/CompeteRules.clp)
 )
 
 /********************************
@@ -148,7 +148,7 @@
    =>
    (clear)
    (reset)
-   (batch smep/smep.clp)
+   (batch smea/smea.clp)
 )
 
 (defrule stopProgram "Halts the rule engine"

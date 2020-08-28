@@ -2,7 +2,7 @@
 * Alex Yu
 * November 26, 2018
 *
-* This module handles the graphic user interface (GUI) part of the Swim Meet Event Picker. It
+* This module handles the graphic user interface (GUI) part of the Swim Meet Event Assistant. It
 * will display questions for the user to answer and assert the appropriate facts for the rule
 * engine. It also prints out the picked events at the end.
 */
@@ -13,7 +13,7 @@
 (import java.awt.event.WindowEvent)
 (import java.awt.BorderLayout)
 
-(batch smep/Toolbox.clp)
+(batch smea/Toolbox.clp)
 
 /*
 * This template keeps track of the user's answers (the value) to specific questions (the type). Facts in this template
@@ -24,7 +24,7 @@
 (defglobal ?*SCREEN_WIDTH* = 600)
 (defglobal ?*SCREEN_HEIGHT* = 450)
 
-(defglobal ?*f* = (new JFrame "Swim Meet Event Picker (SMEP)"))
+(defglobal ?*f* = (new JFrame "Swim Meet Event Assistant (SMEA)"))
 (defglobal ?*answerPanel* = (new JPanel))
 
 /*
